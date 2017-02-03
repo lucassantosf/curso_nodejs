@@ -1,15 +1,15 @@
-var dbConnection = require('../../config/dbConnection');
+module.exports = function(aplication){	
 
-module.exports = function(app){
-
-	var connection = dbConnection();
-
-	app.get('/noticias', function(req, res){
+	aplication.get('/noticias', function(req, res){
 		
+		var connection = aplication.config.dbConnection();
+		var noticiasModel = aplication.app.models.noticiasModel;
 
-		connection.query('select * from noticias', function(error, result){
+		noticiasModel.getNoticias(connection, function(error, result){
 			res.render("noticias/noticias", {noticias:result});
-		});
-		
+
+		});		
 	});
+
+	
 };
