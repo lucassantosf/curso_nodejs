@@ -7,8 +7,8 @@ module.exports = function(aplication){
 
 		noticiasModel.getNoticias(connection, function(error, result){
 			res.render("noticias/noticias", {noticias:result});
-
-		});		
+		});
+				
 	});
 
 	
