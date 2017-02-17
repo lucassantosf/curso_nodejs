@@ -1,0 +1,12 @@
+1) criar um diretorio
+2) iniciar o npm - gerenciador de pacotes
+3) express - npm install express --save
+4) ejs - engine de views - npm install ejs  --save
+5) consign - autoloader - npm install consign --save
+6) bodyparser - popula a variavel body que contem os elementos do formulario transitados nas requisições - npm install body-parser --save
+7) express-validator  - valida informacoes digitadas no formulario - npm install express-validator --save
+
+8)criar diretorio config > server.js
+9)criar arquivo app.js
+10)criar diretório app > views,models,controllers,routes,public
+11) em public > css,images,js
