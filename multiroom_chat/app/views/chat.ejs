@@ -104,16 +104,17 @@
 		<nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
 			<div class="container">
 				<div class="panel-body campo-mensagem">
-					<form>
+					
 						<div class="col-md-12">
 							<div class="input-group">
-								<input type="text" class="form-control" placeholder="Mensagem">
+								<input type="text" class="form-control" placeholder="Mensagem" id="mensagem">
+								<input type="hidden" value="<%=dadosForm.apelido%>" id="apelido">
 								<span class="input-group-btn">
-									<button class="btn btn-default" type="button">></button>
+									<button class="btn btn-default" type="button" id="enviar_mensagem">></button>
 								</span>
 							</div>
 						</div>
-					</form>
+					
 				</div>
 			</div>
 		</nav>		
@@ -124,8 +125,19 @@
 		<script >
 			
 			var socket = io('http://localhost:82');
+			
+			$('#enviar_mensagem').click( function(){
+				socket.emit(
+					'msgParaServidor',
+					{apelido: $('#apelido').val(), mensagem: $('#mensagem').val()}
+					);
+
+			});
+			
 			socket.on('msgParaCliente', function(data){
 				var html = '';
+
+
 
 				html += '<div class="dialogo"> ';
 				 html += '<h4>' + data.apelido + '</h4>';

@@ -12,11 +12,26 @@ var io = require('socket.io').listen(server); // desta forma, requisições para
 
 app.set('io',io);
 
-/* criar a conexao par ao websocket */
+/* criar a conexao para o websocket */
 io.on('connection', function(socket){
 	console.log('Usuario conectou');
 	
 	socket.on('disconnect',function(){
 		console.log('usuario desconectou');
-	})
+	});
+
+	socket.on('msgParaServidor', function(data){
+		socket.emit(
+			'msgParaCliente', 
+			{apelido: data.apelido, mensagem: data.mensagem}
+		);
+
+		socket.broadcast.emit(
+			'msgParaCliente', 
+			{apelido: data.apelido, mensagem: data.mensagem}
+		);
+
+
+	});
+
 });
