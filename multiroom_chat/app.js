@@ -20,7 +20,9 @@ io.on('connection', function(socket){
 		console.log('usuario desconectou');
 	});
 
+	/* dialogo */
 	socket.on('msgParaServidor', function(data){
+		
 		socket.emit(
 			'msgParaCliente', 
 			{apelido: data.apelido, mensagem: data.mensagem}
@@ -31,7 +33,19 @@ io.on('connection', function(socket){
 			{apelido: data.apelido, mensagem: data.mensagem}
 		);
 
+		/* participantes */
+		if(parseInt(data.apelido_atualziado_nos_clientes) == 0) {
+			
+			socket.emit(
+				'participantesParaCliente', 
+				{apelido: data.apelido}
+			);
 
+			socket.broadcast.emit(
+				'participantesParaCliente', 
+				{apelido: data.apelido}
+			);
+		}
 	});
 
 });
