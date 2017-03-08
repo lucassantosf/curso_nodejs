@@ -2,3 +2,29 @@ show dbs; (mostrar todos os bancos existentes)
 use curso_mongodb; (utilizado para alterar uso do banco e também prepara estrutura para um novo banco se nao encontrar pelo nome)
 db.alunos.save({Nome : "Lucas"}); (inserir um campo)
 db.dropDatabase();
+
+db.createCollection("alunos"); // criar uma coleção
+db.getColletctionNames(); // consultar as coleções criadas
+db.cursos.drop(); // primeiro parametro passado é qual a coleção a ser deletada
+
+db.alunos.save({
+	nome: 'Jose',
+	idade: 30,
+	sexo: 'M',
+	cpf: '123.123.123-12',
+	rg: '123.123.123.1',
+	matricula: 'abcd123'
+})
+
+db.alunos.save({
+	nome: 'Maria',
+	idade: 20,
+	sexo: 'F',
+	cpf: '222.123.123-12',
+	rg: '222.123.123.1',
+	matricula: 'nnnn123',
+	curso_interesse: [
+		{curso : 'Curso Completo Desenvolvimento NodeJS'},
+		{curso : 'Curso Completo Desenvolvimento Web'}
+	]
+})
