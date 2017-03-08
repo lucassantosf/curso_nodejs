@@ -1,0 +1,4 @@
+show dbs; (mostrar todos os bancos existentes)
+use curso_mongodb; (utilizado para alterar uso do banco e também prepara estrutura para um novo banco se nao encontrar pelo nome)
+db.alunos.save({Nome : "Lucas"}); (inserir um campo)
+db.dropDatabase();
