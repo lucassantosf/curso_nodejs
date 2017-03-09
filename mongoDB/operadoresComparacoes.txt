@@ -1,0 +1,20 @@
+## Operadores de Comparação ##
+
+	$eq - equals - igual a
+	$gt - greater than - é maior que
+	$gte - greater than or equal - é maior ou igual a
+	$lt - less than - é menor que
+	$lte - less than or equal - é menor ou igual a
+	$ne - not equal = é diferente
+
+	db.alunos.findOne() - irá consultar o ultimo documento
+
+	db.alunos.find() - retorna todos os documentos
+
+	db.alunos.find().pretty() - retorna os mesmos documentos, organizando-os em forma de identação.
+
+## Exemplos de Consultas ##
+
+	db.alunos.find({nome : {$eq:"José"}}).pretty(); - consulta retorna apenas 'nome' igual a José, de forma identada.
+	
+	db.alunos.find({idade : {$lt: 30}}).pretty(); - consulta retorna documentos que possuem a chave 'idade' menor que 30, de forma identada.
