@@ -1,0 +1,41 @@
+O update procura por um documento à partir do critério de busca informado e ao achar,
+ efetua a atualização, caso não encontre ele não faz nada.
+
+O save procura por um documento à partir do critério de busca informado e ao achar 
+ele substitui o documento pelo seu equivalente atualizado, 
+caso não encotre nenhum documento ele insere um documento novo.
+
+## Comandos para Atualizar Documentos
+
+update(
+	{parametros para atualizacao},
+	{$set},
+	{multi: true}); // se true, este parametro ira atualizar todos os documentos que forem de acordo à condição
+
+save(
+	_id:  xxxxxxx // atualizar somente se encotrar determinado ID
+)
+
+
+### Exemplos de Atualização de Documentos ###
+
+db.alunos.update(
+	{
+		nome: 'José'
+	},
+	{
+		$set : {nome : 'João'}
+	}
+) // Neste exemplo, não foi passado o terceiro parametro, ou seja, a atualização sera realizada apenas no primeiro documento que a pesquisa encontrar
+
+db.alunos.update(
+	{
+		sexo : 'F'
+	},
+	{
+		$set : {sexo : 'Feminino'}
+	},
+	{
+		multi:true
+	}
+)

@@ -1,0 +1,27 @@
+### Comando de Remoção ###
+
+remove(
+	{criterio de exclusao},
+	true/false|0/1  --- se for true/1, apenas o primeiro documento dentro do criterio será removido
+)			--- 0/false/omitido, todos os documentos são removidos
+
+
+### Exemplo de Remoção ###
+
+db.alunos.remove(
+	{
+		nome: 'Maria'		
+	}
+)
+
+
+### Exclusão com OR
+
+db.alunos.remove(
+	{
+		$or :[
+			{ nome: {$eq :'Juan'}},
+			{ idade : {$lt : 30}}		
+		]
+	}
+)
