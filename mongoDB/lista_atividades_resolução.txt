@@ -46,21 +46,30 @@ db.livros.find({autor : {$ne : 'Fernando'}} ).pretty();
 
 ---------------------------------------------
 
-5) Atualize os seguintes documentos:
+db.livros.update(
+	{ titulo : ' PHP e MySQL'},
+	{ $set : { valor : 175} }
+)
 
-Atualize o documento cujo o título é PHP e MySQL, passando seu valor de 190.00 para 175.00
+db.livros.update(
+	{ autor : 'Jorge'},
+	{ $set : { titulo : 'Curso Completo de NodeJS'}}
+)
 
-Atualize o documento cujo autor é Jorge, passando seu título para Curso Completo de NodeJS
-
-Atualize todos os documentos cujo valor são iguais ou inferiores a 25.00 para o valor 27.00
-
-
+db.livros.update(
+	{ valor : {$lte : 25}},
+	{ $set : {valor : 27}}
+)
 ---------------------------------------------
 
-6) Remove os seguintes documentos:
+db.livros.remove(
+	{ autor : 'João'}
+)
 
-Remova o documento cujo autor é João
+db.livros.remove(
+	{ valor : {$gt : 280}}
+)
 
-Remova todos os documentos cujo valor é superior a 280.00
-
-Remova todos os documentos cujo valor é inferior a 30.00
+db.livros.remove(
+	{ valor : {$lt : 30}}
+)
