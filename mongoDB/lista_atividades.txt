@@ -2,9 +2,7 @@ Atividades para fixação do conteúdo
 
 1) Crie um banco de dados chamado biblioteca
 
-
 2) Crie uma coleção (collection) chamada livros
-
 
 3) Crie os sequintes documentos:
 
