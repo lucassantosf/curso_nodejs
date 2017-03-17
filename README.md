@@ -5,3 +5,4 @@
 # express validator - npm install express-validator --save
 # socket.io - npm install socket.io --save
 # mongodb - npm install mongodb --save
+# express session - npm install express-session --save
