@@ -24,7 +24,7 @@ JogoDAO.prototype.gerarParametros = function(usuario){
 	});
 }
 
-JogoDAO.prototype.iniciaJogo = function(res, usuario,casa){
+JogoDAO.prototype.iniciaJogo = function(res, usuario,casa , msg){
 	
 	this._connection.open( function(err, mongoClient){
 		mongoClient.collection("jogo", function(err, collection){
@@ -32,7 +32,7 @@ JogoDAO.prototype.iniciaJogo = function(res, usuario,casa){
 
 				
 				
-				res.render("jogo", {img_casa : casa, jogo: result[0] });
+				res.render("jogo", {img_casa : casa, jogo: result[0], msg : msg });
 				
 
 				mongoClient.close();
@@ -42,6 +42,35 @@ JogoDAO.prototype.iniciaJogo = function(res, usuario,casa){
 	});
 }
 
+
+JogoDAO.prototype.acao = function(acao){
+	
+	this._connection.open( function(err, mongoClient){
+		mongoClient.collection("acao", function(err, collection){
+			
+			var date = new Date();
+			var tempo = null;
+
+			switch(acao.acao){
+				
+				case 1: tempo = 1 * 60 * 60000;
+
+				case 2: tempo = 2 * 60 * 60000;
+
+				case 3: tempo = 5 * 60 * 60000;
+
+				case 4: tempo = 5 * 60 * 60000;
+
+			}
+			
+			acao.acao_termina_em = date.getTime() + tempo ;
+
+			collection.insert(acao);
+
+			mongoClient.close();
+		});
+	});
+}
 
 module.exports = function(){
 	
