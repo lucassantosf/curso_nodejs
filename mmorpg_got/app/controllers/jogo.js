@@ -46,7 +46,16 @@ module.exports.pergaminhos = function(application, req, res){
 		return;
 	}
 
-	res.render("pergaminhos", {validacao : {}} );
+
+	/* recuperar acoes inseridas no bd*/
+
+	var connection = application.config.dbConnection;
+	var JogoDAO = new application.app.models.JogoDAO(connection);
+
+	var usuario = req.session.usuario;
+	JogoDAO.getAcoes(usuario, res);
+
+
 	
 
 }
