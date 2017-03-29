@@ -6,3 +6,4 @@
 # socket.io - npm install socket.io --save
 # mongodb - npm install mongodb --save
 # express session - npm install express-session --save
+# crypto - npm install crypto --save
