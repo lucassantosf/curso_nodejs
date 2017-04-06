@@ -79,6 +79,8 @@ app.post('/api',function(req,res){
 
 app.get('/api',function(req,res){
 	
+	res.setHeader("Access-Control-Allow-Origin","*");
+
 	var dados = req.body;
 	db.open( function(err, mongoclient){
 		mongoclient.collection('postagens', function(err, collection){
@@ -93,6 +95,24 @@ app.get('/api',function(req,res){
 		});
 	});	
 });
+
+app.get('/imagens/:imagem', function(req, res){
+	
+	var img = req.params.imagem;
+
+	fs.readFile('./uploads/'+img, function(err, content){
+		if(err){
+			res.status(400).json(err);
+			return;
+		}
+
+		res.writeHead(200, {'content-type' : 'image/jpg'})
+		res.end(content);
+
+
+	});
+});
+
 
 //GET by id (read)
 
