@@ -9,7 +9,7 @@ var app = express();
 
 //body-parser
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 app.use(multiparty());
 
 app.use(function(req, res, next){
